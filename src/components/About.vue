@@ -1,7 +1,5 @@
 <template>
-  <div class="About">
-    About
-  </div>
+  <div class="About">About</div>
 </template>
 
 <script>
@@ -12,6 +10,7 @@ export default {
   },
   computed: {},
   mounted() {
+    //
   },
   methods: {}
 }

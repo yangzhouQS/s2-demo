@@ -1,4 +1,4 @@
-<script lang='tsx'>
+<script lang="tsx">
 import '@/styles/index.less'
 import { defineComponent } from 'vue'
 

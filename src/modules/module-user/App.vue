@@ -1,12 +1,10 @@
 <template>
-  <div>
-    hello user
-  </div>
+  <div>hello user</div>
 </template>
 <script lang="ts">
 export default {
-  name: 'ModuleUser',
-};
+  name: 'ModuleUser'
+}
 </script>
 <style>
 * {
@@ -14,7 +12,9 @@ export default {
   padding: 0;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 </style>

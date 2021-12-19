@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import eslintPlugin from 'vite-plugin-eslint';
-import viteStylelint from '@amatlash/vite-plugin-stylelint';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import eslintPlugin from 'vite-plugin-eslint'
+import viteStylelint from '@amatlash/vite-plugin-stylelint'
 
-const { resolve } = require('path');
+const { resolve } = require('path')
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,23 +17,23 @@ export default defineConfig({
       // options are passed on to @vue/babel-plugin-jsx
     }),
     eslintPlugin(),
-    viteStylelint(),
+    viteStylelint()
   ],
   server: {
-    port: 8090,
+    port: 8090
   },
   resolve: {
     alias: {
       '@styles': '/src/styles',
       '@c': '/src/components',
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(__dirname, 'src')
     },
     extensions: ['.js', '.jsx', '.tsx', '.json'],
     dedupe: [],
     // 情景导出package.json 配置中的 exports 字段
     conditions: [],
     // 解析package.json 中的字段
-    mainFields: ['module', 'jsnext:main', 'jsnext'],
+    mainFields: ['module', 'jsnext:main', 'jsnext']
   },
   json: {
     // 是否支持从 .json 文件中进行按名导入
@@ -41,7 +41,7 @@ export default defineConfig({
     // 若设置为 true, 导入的 JSON 会被转换为 export default JSON.parse("...") 会比转译成对象字面量性能更好
     // 尤其是当 JSON 文件较大时
     // 开启此项， 则会禁用按名导入
-    stringify: false,
+    stringify: false
   },
 
   // 静态资源处理   字符串 || 正则表达式
@@ -69,14 +69,14 @@ export default defineConfig({
       input: {
         // admin: resolve(__dirname, 'src/index.html'),
         home: resolve(__dirname, './src/modules/module-home/index.html'),
-        user: resolve(__dirname, './src/modules/module-user/index.html'),
+        user: resolve(__dirname, './src/modules/module-user/index.html')
       },
       output: {
         chunkFileNames: 'static/js/[name]-[hash].js',
         entryFileNames: 'static/js/[name]-[hash].js',
-        assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
-      },
-    },
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+      }
+    }
   },
   css: {
     // 配置css modules 的行为， 选项被传递给postcss-modules
@@ -87,7 +87,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         // additionalData: '@import "./src/styles/color.less"'
-      },
-    },
-  },
-});
+      }
+    }
+  }
+})
