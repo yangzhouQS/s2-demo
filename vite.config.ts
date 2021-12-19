@@ -1,10 +1,11 @@
-import { defineConfig, loadEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import eslintPlugin from 'vite-plugin-eslint';
+import viteStylelint from '@amatlash/vite-plugin-stylelint';
 
-const { resolve } = require('path')
-// const resolve = (dir: string) => path.resolve(__dirname, dir)
-console.log(__dirname)
+const { resolve } = require('path');
+
 // https://vitejs.dev/config/
 export default defineConfig({
   // root: '/src/modules/module-home/',
@@ -14,7 +15,9 @@ export default defineConfig({
     vue(),
     vueJsx({
       // options are passed on to @vue/babel-plugin-jsx
-    })
+    }),
+    eslintPlugin(),
+    viteStylelint(),
   ],
   server: {
     port: 8090,
@@ -23,14 +26,14 @@ export default defineConfig({
     alias: {
       '@styles': '/src/styles',
       '@c': '/src/components',
-      '@': resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src'),
     },
-    extensions: [ '.js', '.jsx', '.tsx', '.json' ],
+    extensions: ['.js', '.jsx', '.tsx', '.json'],
     dedupe: [],
     // 情景导出package.json 配置中的 exports 字段
     conditions: [],
     // 解析package.json 中的字段
-    mainFields: [ 'module', 'jsnext:main', 'jsnext' ],
+    mainFields: ['module', 'jsnext:main', 'jsnext'],
   },
   json: {
     // 是否支持从 .json 文件中进行按名导入
@@ -38,7 +41,7 @@ export default defineConfig({
     // 若设置为 true, 导入的 JSON 会被转换为 export default JSON.parse("...") 会比转译成对象字面量性能更好
     // 尤其是当 JSON 文件较大时
     // 开启此项， 则会禁用按名导入
-    stringify: false
+    stringify: false,
   },
 
   // 静态资源处理   字符串 || 正则表达式
@@ -50,7 +53,7 @@ export default defineConfig({
   build: {
     // 浏览器兼容性 ‘esnext’ | 'modules'
     target: 'modules',
-    //输出路径
+    // 输出路径
     outDir: resolve(__dirname, 'dist'),
     // 生成静态资源的存放路径
     assetsDir: '../assets',
@@ -72,7 +75,7 @@ export default defineConfig({
         chunkFileNames: 'static/js/[name]-[hash].js',
         entryFileNames: 'static/js/[name]-[hash].js',
         assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
-      }
+      },
     },
   },
   css: {
@@ -84,7 +87,7 @@ export default defineConfig({
     preprocessorOptions: {
       less: {
         // additionalData: '@import "./src/styles/color.less"'
-      }
-    }
-  }
-})
+      },
+    },
+  },
+});
