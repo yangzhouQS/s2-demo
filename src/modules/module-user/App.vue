@@ -5,8 +5,8 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'module-user'
-}
+  name: 'ModuleUser',
+};
 </script>
 <style>
 * {
